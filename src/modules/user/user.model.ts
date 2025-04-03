@@ -39,6 +39,7 @@ const userSchema = new Schema<IUser>({
   userStatus: {
     type: String,
     enum: {values: ["active", "inactive"], message: '{VALUE} is not valid status, please provide a valid status'},
+    default: "active",
     required: true,
   },
 });
