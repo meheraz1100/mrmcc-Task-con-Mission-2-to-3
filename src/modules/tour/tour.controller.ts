@@ -3,131 +3,121 @@ import { tourService } from "./tour.service"
 
 const createTour = async (req: Request, res: Response) => {
     try {
-        const body = req.body;
-        const result = await tourService.createTour(body);
-
-    res.send({
+      const body = req.body
+      const result = await tourService.createTour(body)
+  
+      res.send({
         success: true,
-        message: "Tour Created Successfully",
+        message: 'Tour created successfully',
         result,
-    })
+      })
     } catch (error) {
-        res.send({
-            success: false,
-            message: "Something went wrong",
-            error
-        })
+      res.send({
+        success: false,
+        message: 'Something went wrong',
+        error,
+      })
     }
-}
-
-
-const getTours = async (req: Request, res: Response) => {
+  }
+  
+  const getTours = async (req: Request, res: Response) => {
     try {
-        const result = await tourService.getTours();
-
-    res.send({
+      const result = await tourService.getTours()
+  
+      res.send({
         success: true,
-        message: "Tours getting Successfully",
+        message: 'Tours get successfully',
         result,
-    })
+      })
     } catch (error) {
-        res.send({
-            success: false,
-            message: "Something went wrong",
-            error
-        })
+      res.send({
+        success: false,
+        message: 'Something went wrong',
+        error,
+      })
     }
-}
-
-
-const getSingleTours = async (req: Request, res: Response) => {
+  }
+  
+  const getSingleTour = async (req: Request, res: Response) => {
     try {
-    const id = req.params.id;
-        const result = await tourService.getSingleTour(id);
-
-    res.send({
+      const id = req.params.id
+      const result = await tourService.getSingleTour(id)
+  
+      res.send({
         success: true,
-        message: "Tour getting Successfully",
+        message: 'Tour get successfully',
         result,
-    })
+      })
     } catch (error) {
-        res.send({
-            success: false,
-            message: "Something went wrong",
-            error
-        })
+      res.send({
+        success: false,
+        message: 'Something went wrong',
+        error,
+      })
     }
-}
-
-
-const updateTour = async (req: Request, res: Response) => {
+  }
+  
+  const updateTour = async (req: Request, res: Response) => {
     try {
-    const id = req.params.id;
-    const body = req.body;
-        const result = await tourService.updateTour(id, body);
-
-    res.send({
+      const id = req.params.id
+      const body = req.body
+      const result = await tourService.updateTour(id, body)
+  
+      res.send({
         success: true,
-        message: "Tour updated Successfully",
+        message: 'Tour updated successfully',
         result,
-    })
+      })
     } catch (error) {
-        res.send({
-            success: false,
-            message: "Something went wrong",
-            error
-        })
+      res.send({
+        success: false,
+        message: 'Something went wrong',
+        error,
+      })
     }
-}
-
-
-const deleteTour = async (req: Request, res: Response) => {
+  }
+  const deleteTour = async (req: Request, res: Response) => {
     try {
-    const id = req.params.id;
-        const result = await tourService.deleteTour(id);
-
-    res.send({
+      const id = req.params.id
+      const result = await tourService.deleteTour(id)
+  
+      res.send({
         success: true,
-        message: "Tour deleted Successfully",
+        message: 'Tour deleted successfully',
         result,
-    })
+      })
     } catch (error) {
-        res.send({
-            success: false,
-            message: "Something went wrong",
-            error
-        })
+      res.send({
+        success: false,
+        message: 'Something went wrong',
+        error,
+      })
     }
-}
-
-
-const getNextSchedule = async (req: Request, res: Response) => {
+  }
+  const getNextSchedule = async (req: Request, res: Response) => {
     try {
-    const id = req.params.id;
-        const result = await tourService.getNextSchedule(id);
-
-    res.send({
+      const id = req.params.id
+      const result = await tourService.getNextSchedule(id)
+  
+      res.send({
         success: true,
-        message: "Next Schedule tour getting Successfully",
+        message: 'Tour deleted successfully',
         result,
-    })
+      })
     } catch (error) {
-        res.send({
-            success: false,
-            message: "Something went wrong",
-            error
-        })
+      res.send({
+        success: false,
+        message: 'Something went wrong',
+        error,
+      })
     }
-}
-
-
-
-
-export const tourController = {
+  }
+  
+  export const tourController = {
     createTour,
     getTours,
-    getSingleTours,
+    getSingleTour,
     updateTour,
     deleteTour,
-    getNextSchedule
-}
+    getNextSchedule,
+  }

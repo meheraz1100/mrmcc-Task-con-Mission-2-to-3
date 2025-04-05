@@ -6,10 +6,10 @@
 // delete booking = soft delete
 
 import express from "express"
-import { Request, Response } from "express"
+import { bookingController } from "./booking.controller"
 
-const router = express.Router()
+const bookingRouter = express.Router()
 
-router.post('/create-booking', (req: Request, res: Response) => {
-    res.send('create booking')
-})
+bookingRouter.post('/create-booking', bookingController.createBooking)
+
+export default bookingRouter

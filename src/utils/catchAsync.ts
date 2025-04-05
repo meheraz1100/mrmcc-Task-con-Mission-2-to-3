@@ -3,14 +3,14 @@ import { userService } from "../modules/user/user.service";
 import { StatusCodes } from "http-status-codes";
 import sendResponse from "./sendResponse";
 
+
 const catchAsync = (func: RequestHandler) => {
   return (req: Request, res: Response, next: NextFunction) => {
-    Promise.resolve(func(req, res, next)).catch((error) => next(error));
-  };
-};
+    Promise.resolve(func(req, res, next)).catch((error) => next(error))
+  }
+}
 
-
-export default catchAsync;
+export default catchAsync
 
 // catchAsync(async (req, res) => {
 //   const result = await userService.getUser();

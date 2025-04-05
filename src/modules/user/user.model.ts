@@ -4,59 +4,53 @@ import { IUser } from "./user.interface";
 const userSchema = new Schema<IUser>({
   name: {
     type: String,
-    required: [true, "Name is required"],
-    minLength: 3,
-    maxLength: 50,
+    required: [true, 'Please provide your name'],
+    minlength: 3,
+    maxlength: 50,
   },
-  age: {
-    type: Number,
-    required: [true, "Age is required"],
-  },
+  age: { type: Number, required: [true, 'Please enter your age'] },
   email: {
     type: String,
-    required: [true, "Email is required"],
+    required: [true, 'Please provide your email'],
     unique: true,
     validate: {
-        validator: function (value: string) {
-            // Regular expression for validating email format
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(value);
-        }
+      validator: function (value: string) {
+        return /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(value)
+      },
+      message: '{VALUE} is not a valid email',
     },
-    message: "{VALUE} is not a valid email",
     immutable: true,
   },
   photo: String,
   role: {
     type: String,
     enum: {
-      values: ["user", "admin"],
-      message: "{VALUE} is not valid role, please provide a valid role",
+      values: ['user', 'admin'],
+      message: '{VALUE} is not valid, please provide a valid role',
     },
-    default: "user",
+    default: 'user',
     required: true,
   },
   userStatus: {
     type: String,
-    enum: {values: ["active", "inactive"], message: '{VALUE} is not valid status, please provide a valid status'},
-    default: "active",
+    enum: ['active', 'inactive'],
     required: true,
+    default: 'active',
   },
-});
+})
 
 // hook -> pre
-userSchema.pre("find", function (this, next){
-    this.find({userStatus: {$ne: "active"}})
-    next()
-})
+// userSchema.pre('find', function (this, next) {
+//   this.find({ userStatus: { $eq: 'active' } })
+//   next()
+// })
 
-// hook -> post
-userSchema.post("find", function(docs, next){
-    docs.forEach((doc: IUser) => {
-        doc.name = doc.name.toUpperCase()
-    }) 
-    next()
-})
+// userSchema.post('find', function (docs, next) {
+//   docs.forEach((doc: IUser) => {
+//     doc.name = doc.name.toUpperCase()
+//   })
+//   next()
+// })
 
-const User = model<IUser>("User", userSchema);
-export default User;
+const User = model<IUser>('User', userSchema)
+export default User

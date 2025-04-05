@@ -36,7 +36,7 @@ review {
 
 
 
-## Higher order function explain by github copilot
+## Higher order function explain by Meheraz
 *higher order function
 *// A higher-order function is a function that takes one or more functions as arguments, returns a function as its result, or both.
 *// In other words, a higher-order function is a function that operates on other functions, either by taking them as arguments or by returning them.

@@ -3,7 +3,7 @@ export interface IUser {
     age: number
     email: string
     photo?: string | null
-    role: "user" | "admin"
-    userStatus: "active" | "inactive"
-}
-
+    role: 'user' | 'admin'
+    userStatus: 'active' | 'inactive'
+  }
+  

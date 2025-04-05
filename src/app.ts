@@ -1,33 +1,34 @@
 import express, { NextFunction } from "express";
-import userRouter from "./modules/user/user.router";
+import userRouter from "./modules/user/user.route";
 import tourRouter from "./modules/tour/tour.route";
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
+import bookingRouter from "./modules/booking/booking.route";
 
-const app = express();
+const app = express()
 
 // middleware
-app.use(express.json());
+app.use(express.json())
 
-app.use("/api/user", userRouter);
-app.use("/api/tour", tourRouter);
+app.use('/api/user', userRouter)
+app.use('/api/tour', tourRouter)
+app.use('/api/booking', bookingRouter)
 
-// POST = /api/user/create-user
+// POST: /api/user/create-user
 
-app.get("/", (req: Request, res: Response) => {
+app.get('/', (req: Request, res: Response) => {
   res.send({
     status: true,
-    message: "Server Live🎇",
-  });
-});
+    message: 'Server Live ⚡',
+  })
+})
 
-app.use((err: any, req:Request, res:Response, next: NextFunction) => {
-  console.log("Error from App.ts", err);
-  res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-    success: false,
-    message: err.message,
-    error: err,
-  });
-});
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+app.use((err: any, req: Request, res: Response, _next: NextFunction) => {
+  console.log('error from app.ts', err)
+  res
+    .status(StatusCodes.INTERNAL_SERVER_ERROR)
+    .json({ success: false, message: err.message, error: err })
+})
 
-export default app;
+export default app
