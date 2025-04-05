@@ -24,11 +24,9 @@ app.get('/', (req: Request, res: Response) => {
 })
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-app.use((err: any, req: Request, res: Response, _next: NextFunction) => {
-  console.log('error from app.ts', err)
-  res
-    .status(StatusCodes.INTERNAL_SERVER_ERROR)
-    .json({ success: false, message: err.message, error: err })
-})
+app.use()
 
 export default app
+
+// express -> workflow -> 
+// train -> []-[]-[] -> 
