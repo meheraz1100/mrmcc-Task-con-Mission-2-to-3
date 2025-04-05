@@ -4,6 +4,7 @@ import tourRouter from "./modules/tour/tour.route";
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import bookingRouter from "./modules/booking/booking.route";
+import { globalErrorHandler } from "./middlewares/globalErrorHandler";
 
 const app = express()
 
@@ -24,7 +25,14 @@ app.get('/', (req: Request, res: Response) => {
 })
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-app.use()
+app.use(globalErrorHandler)
+
+app.use("*", (req: Request, res: Response) => {
+  res.status(StatusCodes.NOT_FOUND).json({
+    success: false,
+    message: "Route not found",
+  })
+})
 
 export default app
 
