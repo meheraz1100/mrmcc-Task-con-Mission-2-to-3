@@ -7,6 +7,7 @@ import catchAsync from "../../utils/catchAsync";
 
 const createUser = catchAsync(async (req, res) => {
   const payload = req.body
+  console.log("Payload", payload)
 
   const result = await userService.createUser(payload)
 
