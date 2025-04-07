@@ -12,7 +12,10 @@ const createTour = async (payload: ITour) => {
     return result
   }
   
-  const getTours = async () => {
+  const getTours = async (query: Record<string, unknown>) => {
+
+    // {searchTerm  :}
+    console.log(query)
     const result = Tour.find()
     return result
   }
